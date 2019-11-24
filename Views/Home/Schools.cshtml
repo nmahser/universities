@@ -1,0 +1,89 @@
+﻿
+@model universities.Models.Schools
+
+
+
+<h1>Schools</h1>
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                State
+            </th>
+            <th>
+                Enrollment
+            </th>
+            <th>
+                Tuition In State
+            </th>
+            <th>
+                Tuition Out of State
+            </th>
+
+            <th>
+                Type
+            </th>
+
+            <th>
+                Website
+            </th>
+
+            <th>
+                Price Calculator
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var item in Model.results)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Studentsize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TuitionInState)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TuitionOutOfState)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.latestprogramscip_4_digit)
+
+            </td>
+            <td>
+                <a href="@item.Url" target="_blank">
+                    @Html.DisplayFor(modelItem => item.Url)
+                </a>
+            </td>
+            <td>
+                <a href="@item.PriceCalculatorUrl" target="_blank">
+                    @Html.DisplayFor(modelItem => item.PriceCalculatorUrl)
+                </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+  
+
+
+<script>
+    alertDbSave(@ViewBag.dbSuccessComp);
+</script>
+
