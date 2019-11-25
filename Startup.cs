@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using universities.DataAccess;
+using Microsoft.AspNetCore.Mvc;
 
 namespace universities
 {
@@ -25,6 +26,8 @@ namespace universities
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc().AddSessionStateTempDataProvider();
+            services.AddSession();
             services.AddControllersWithViews();
 
             // Setup EF connection - modify the Conguration string
@@ -47,6 +50,8 @@ namespace universities
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            app.UseSession();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
@@ -60,6 +65,7 @@ namespace universities
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }

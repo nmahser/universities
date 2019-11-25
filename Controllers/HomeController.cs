@@ -47,6 +47,7 @@ namespace universities.Controllers
 
             Schools schools = webHandler.GetSchools();
             
+            //Cookies are too big that causes 400 error. So enable session state for TempData in startup.cs
             TempData["Schools"] = JsonConvert.SerializeObject(schools);
 
             return View(schools);
