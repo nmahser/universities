@@ -5,13 +5,15 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using universities.Models;
 using System.Diagnostics;
+using universities.DataAccess;
 
 namespace universities.APIHandlerManager
 {
     public class APIHandler
     {
+
         static string BASE_URL = "https://api.data.gov/ed/collegescorecard/v1/schools";
-        static string API_KEY = ""; //Add your API key here inside ""
+        static string API_KEY = "EHWNgwxOCvs8bD8bxsLKw4s05kuhgmBPpcg94EPK"; //Add your API key here inside ""
 
         HttpClient httpClient;
 
@@ -19,6 +21,7 @@ namespace universities.APIHandlerManager
         ///  Constructor to initialize the connection to the data source
         public APIHandler()
         {
+
             httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Clear();
             httpClient.DefaultRequestHeaders.Add("X-Api-Key", API_KEY);
@@ -27,10 +30,13 @@ namespace universities.APIHandlerManager
 
         }
 
+      
+
         public Schools GetSchools()
         {
-            string Universities_API_PATH = BASE_URL + "?latest.programs.cip_4_digit.code=1107&latest.programs.cip_4_digit.credential.level=5&per_page=100&fields=school.state,school.price_calculator_url,school.school_url,school.name,id,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.student.size,latest.programs.cip_4_digit.school.type&sort=school.state";
+            string Universities_API_PATH = BASE_URL + "?latest.programs.cip_4_digit.code=1107&latest.programs.cip_4_digit.credential.level=5&per_page=20&fields=school.state,school.price_calculator_url,school.school_url,school.name,id,latest.cost.tuition.out_of_state,latest.cost.tuition.in_state,latest.student.size,latest.programs.cip_4_digit.school.type,latest.programs.cip_4_digit.unit_id&sort=school.state";
             string schoolsData = "";
+            //latest.programs.cip_4_digit.unit_id
 
             Schools schools = null;
 
@@ -47,6 +53,7 @@ namespace universities.APIHandlerManager
                 {
 
                     schoolsData = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    Debug.WriteLine(schoolsData.ToString() + " " + "WTFFFFFFFFF");
 
                 }
 
@@ -61,6 +68,8 @@ namespace universities.APIHandlerManager
                     };
 
                     schools = JsonConvert.DeserializeObject<Schools>(schoolsData,settings);
+                    Debug.WriteLine(schools.ToString() + " " + "SCHOOLS");
+
                 }
 
                 else if  (!response.IsSuccessStatusCode)

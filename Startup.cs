@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using universities.DataAccess;
 
 namespace universities
 {
@@ -24,6 +26,12 @@ namespace universities
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            // Setup EF connection - modify the Conguration string
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration["Data:universities:ConnectionString"]));
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

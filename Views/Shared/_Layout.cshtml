@@ -7,37 +7,72 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">universities</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+    <header class="navbar bg-primary shadow">
+        <div class="container">
+            <!--    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">universities</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>  -->
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">UNIVERISTIES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Schema & Chart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="AboutUs" asp-action="Index">ABOUT US</a>
+                    </li>
+
+                </ul>
             </div>
-        </nav>
+        </div>
+
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <!-- <main>
 
-    <footer class="border-top footer text-muted">
+         <div class="home">
+
+             <img src="~/img/Background_home.jpg">
+
+         </div>
+     </main> -->
+    <!-- <footer class="border-top footer text-muted">
+         <div class="container">
+             &copy; 2019 - universities - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+         </div>
+     </footer> -->
+    <footer class="footer">
         <div class="container">
-            &copy; 2019 - universities - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <hr>
+            <div class="row items-center content-center text-center">
+                <!--<ul class="col nav nav-footer content-center">
+                </ul> -->
+                <div class="col copyright" align="left">
+                    <center><p> © 2019 This work is referenced from <a href="https://www.data.gov/" target="_blank">The home of the U.S. Government’s open data</a></p> </center>
+                </div>
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -45,4 +80,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
+
 </html>
